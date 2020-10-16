@@ -1,39 +1,28 @@
-<!-- TODO Extend base template, title, header (https://flask.palletsprojects.com/en/1.1.x/tutorial/templates/) -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
-    <title>Secure password generator.</title>
-</head>
-<body>
-    <div class="container">
-    
-        <h1>Welcome to my password generator!</h1>
-    
-        <form method="POST">
-            <div class="form-group">
-                <label for="password">Password</label>
-                
-                {% with passwords = get_flashed_messages() %}
-                    {% if passwords %}
-                        {% for password in passwords %}
-                            <input type="text" class="form-control" id="password"  placeholder="{{password}}" readonly>
-                        {% endfor %}
-                    {% else %}
-                        <input type="text" class="form-control" id="password"  placeholder="Click to generate password" readonly>
-                    {% endif %}
-                {% endwith %}
-            </div>
+{% extends 'base.html' %}
 
-            <div class="form-group">
-                <label for="length">Password length</label>
-                <input type="text" class="form-control" id="length"  placeholder="13" name="length">
-            </div>
+{% block content %}
+<h1>Welcome to my password generator!</h1>
 
-            <button type="submit" class="btn btn-primary">Generate</button>
-        </form>
+<form method="POST">
+    <div class="form-group">
+        <label for="password">Password</label>
+
+        {% with passwords = get_flashed_messages() %}
+            {% if passwords %}
+                {% for password in passwords %}
+                    <input type="text" class="form-control" id="password"  placeholder="{{password}}" readonly>
+                {% endfor %}
+            {% else %}
+                <input type="text" class="form-control" id="password"  placeholder="Click to generate password" readonly>
+            {% endif %}
+        {% endwith %}
     </div>
-</body>
-</html>
+
+    <div class="form-group">
+        <label for="length">Password length</label>
+        <input type="text" class="form-control" id="length"  value="13" name="length">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Generate</button>
+</form>
+{% endblock %}

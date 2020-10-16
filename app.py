@@ -10,17 +10,16 @@ def index():
         try:
             length = int(request.form['length'])
             pg = PasswordGenerator.PasswordGenerator()
-            password = pg.generate_password(length)   
+            password = pg.generate_password(length)
             flash(password)
             return redirect("/")
-        except: 
+        except:
             # TODO Flask Flash an error message
             return "Length is not an integer."
     else:
-        return render_template('index.html')          
+        return render_template('index.html')
 
-@app.route('/<int:length>')    
+@app.route('/<int:length>')
 def generate_password(length):
     pg = PasswordGenerator.PasswordGenerator()
     return pg.generate_password(length)
-    
