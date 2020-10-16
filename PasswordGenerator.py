@@ -14,6 +14,6 @@ class PasswordGenerator:
         Returns:
             string: Generated Password
         """
-        alphabet = string.ascii_letters + string.digits + '!@#$%^&*()}{'
+        alphabet = string.ascii_letters + string.digits + '!@#$%^&*()}{_+-='
         password = ''.join(secrets.choice(alphabet) for i in range(int(length)))
         return password
