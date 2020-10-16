@@ -1,12 +1,12 @@
 ##
-from flask import Flask
+from flask import Flask, render_template
 import PasswordGenerator
 
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
-    return "Hey Adam"
+def index():
+    return render_template('index.html')
 
 @app.route('/<int:length>')    
 def generate_password(length):
