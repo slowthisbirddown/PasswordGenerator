@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Welcome to my password generator!</h1>
+<h1><center>Welcome to my password generator!</center></h1>
 
 <form method="POST">
     <div class="form-group">
@@ -23,8 +23,11 @@
         <input type="text" class="form-control" id="length"  value="13" name="length">
     </div>
 
-    <button type="submit" class="btn btn-primary">Generate</button>
+    <button class="btn generate" id="generate">Generate Password</button>
 
 </form>
-<center>Source code: <a href="https://github.com/slowthisbirddown/PasswordGenerator">GitHub</a></center>
+<div class="footer">
+    <center>Source code: <a href="https://github.com/slowthisbirddown/PasswordGenerator">GitHub</a></center>
+    <center>Wifi Security Explained <a href="https://www.freecodecamp.org/news/wifi-security-explained/">FreeCodeCamp</a></center>
+</div>
 {% endblock %}
