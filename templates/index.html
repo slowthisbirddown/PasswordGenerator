@@ -9,8 +9,8 @@
 
         {% with passwords = get_flashed_messages() %}
             {% if passwords %}
-                {% for password in passwords %}                
-                    <input type="text" class="form-control" id="password" value="{{password}}" readonly>                     
+                {% for password in passwords %}
+                    <input type="text" class="form-control" id="password" value="{{password}}" readonly>
                 {% endfor %}
                 <button class="btn generate" type="button" onclick="copyToClipboard('#password')" id="generate">Copy Password</button>
             {% else %}
@@ -34,7 +34,7 @@
 function copyToClipboard(element) {
     var copyPass = document.getElementById("password");
     copyPass.select();
-    copyPass.setSelectionRange(0, 99999); /*For mobile devices*/    
+    copyPass.setSelectionRange(0, 99999); /*For mobile devices*/
     document.execCommand("copy"); /* Copy the text inside the text field */
 }
 </script>
