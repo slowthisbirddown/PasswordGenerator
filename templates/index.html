@@ -9,10 +9,10 @@
 
         {% with passwords = get_flashed_messages() %}
             {% if passwords %}
-                {% for password in passwords %}
-                    <input type="text" class="form-control" id="password"  placeholder="{{password}}" readonly>
+                {% for password in passwords %}                
+                    <input type="text" class="form-control" id="password" value="{{password}}" readonly>                     
                 {% endfor %}
-                <button class="btn generate" id="generate" data-clipboard-target="password">Copy Password</button>
+                <button class="btn generate" type="button" onclick="copyToClipboard('#password')" id="generate">Copy Password</button>
             {% else %}
                 <input type="text" class="form-control" id="password"  readonly>
             {% endif %}
@@ -24,12 +24,18 @@
     </div>
 
     <button class="btn generate" type="submit" id="generate">Generate Password</button>
-
 </form>
 <div class="footer">
     <center>Source code: <a href="https://github.com/slowthisbirddown/PasswordGenerator">GitHub</a></center>
     <center>Wifi Security Explained: <a href="https://www.freecodecamp.org/news/wifi-security-explained/">FreeCodeCamp</a></center>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
-<script>new ClipboardJS('.btn');</script>
+
+<script>
+function copyToClipboard(element) {
+    var copyPass = document.getElementById("password");
+    copyPass.select();
+    copyPass.setSelectionRange(0, 99999); /*For mobile devices*/    
+    document.execCommand("copy"); /* Copy the text inside the text field */
+}
+</script>
 {% endblock %}
